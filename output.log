@@ -1,0 +1,290 @@
+werkzeug 2023-12-14 16:37:14,970 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:37:14,979 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:37:26,713 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug 2023-12-14 16:37:26,713 - INFO - [33mPress CTRL+C to quit[0m
+werkzeug 2023-12-14 16:37:26,714 - INFO -  * Restarting with stat
+werkzeug 2023-12-14 16:37:27,966 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:37:27,974 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:37:47,669 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:37:47,807 - INFO -  * Restarting with stat
+werkzeug 2023-12-14 16:37:49,077 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:37:49,085 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:38:08,801 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:38:08,936 - INFO -  * Restarting with stat
+werkzeug 2023-12-14 16:38:10,188 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:38:10,195 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:38:22,648 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:38:22,781 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:38:24,024 - INFO - Running from_llm: --- 5.412101745605469e-05 seconds ---
+salesgpt.logger 2023-12-14 16:38:24,024 - INFO - Running from_llm: --- 5.698204040527344e-05 seconds ---
+salesgpt.logger 2023-12-14 16:40:37,740 - INFO - Running from_llm: --- 5.1975250244140625e-05 seconds ---
+salesgpt.logger 2023-12-14 16:40:37,740 - INFO - Running from_llm: --- 5.602836608886719e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:40:37,740 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:40:37,740 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:40:37,740 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+salesgpt.logger 2023-12-14 16:41:49,518 - INFO - Running from_llm: --- 5.1975250244140625e-05 seconds ---
+salesgpt.logger 2023-12-14 16:41:49,518 - INFO - Running from_llm: --- 5.626678466796875e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:41:49,518 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:41:49,518 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:41:49,518 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:41:50,477 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:41:51,017 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:41:51,041 - INFO - Running from_llm: --- 1.5232980251312256 seconds ---
+salesgpt.logger 2023-12-14 16:41:51,041 - INFO - Running seed_agent: --- 1.0967254638671875e-05 seconds ---
+httpx 2023-12-14 16:41:51,459 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:41:51,466 - INFO - Running determine_conversation_stage: --- 0.424605131149292 seconds ---
+httpx 2023-12-14 16:41:52,552 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:41:52,557 - INFO - Running step: --- 1.0913851261138916 seconds ---
+werkzeug 2023-12-14 16:41:52,568 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug 2023-12-14 16:41:52,568 - INFO - [33mPress CTRL+C to quit[0m
+werkzeug 2023-12-14 16:41:52,569 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:41:53,828 - INFO - Running from_llm: --- 5.316734313964844e-05 seconds ---
+salesgpt.logger 2023-12-14 16:41:53,828 - INFO - Running from_llm: --- 5.6743621826171875e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:41:53,828 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:41:53,828 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:41:53,828 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:41:54,109 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:41:54,394 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:41:54,418 - INFO - Running from_llm: --- 0.5900018215179443 seconds ---
+salesgpt.logger 2023-12-14 16:41:54,418 - INFO - Running seed_agent: --- 1.1205673217773438e-05 seconds ---
+httpx 2023-12-14 16:41:55,317 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:41:55,323 - INFO - Running determine_conversation_stage: --- 0.9052269458770752 seconds ---
+httpx 2023-12-14 16:41:56,759 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:41:56,765 - INFO - Running step: --- 1.441009283065796 seconds ---
+werkzeug 2023-12-14 16:41:56,773 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:41:56,787 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:42:49,454 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:42:49,858 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:42:51,099 - INFO - Running from_llm: --- 5.1021575927734375e-05 seconds ---
+salesgpt.logger 2023-12-14 16:42:51,099 - INFO - Running from_llm: --- 5.6743621826171875e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:42:51,099 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:42:51,099 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:42:51,099 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:42:51,378 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:42:51,623 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:42:51,677 - INFO - Running from_llm: --- 0.5788068771362305 seconds ---
+salesgpt.logger 2023-12-14 16:42:51,678 - INFO - Running seed_agent: --- 1.1920928955078125e-05 seconds ---
+werkzeug 2023-12-14 16:42:51,685 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:42:51,695 - INFO -  * Debugger PIN: 440-232-453
+salesgpt.logger 2023-12-14 16:42:58,685 - INFO - Running from_llm: --- 5.316734313964844e-05 seconds ---
+salesgpt.logger 2023-12-14 16:42:58,686 - INFO - Running from_llm: --- 5.7220458984375e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:42:58,686 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:42:58,686 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:42:58,686 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:42:58,964 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:42:59,224 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:42:59,273 - INFO - Running from_llm: --- 0.5876710414886475 seconds ---
+salesgpt.logger 2023-12-14 16:42:59,273 - INFO - Running seed_agent: --- 1.0967254638671875e-05 seconds ---
+werkzeug 2023-12-14 16:42:59,281 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug 2023-12-14 16:42:59,281 - INFO - [33mPress CTRL+C to quit[0m
+werkzeug 2023-12-14 16:42:59,282 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:43:00,531 - INFO - Running from_llm: --- 5.2928924560546875e-05 seconds ---
+salesgpt.logger 2023-12-14 16:43:00,531 - INFO - Running from_llm: --- 6.699562072753906e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:43:00,531 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:43:00,531 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:43:00,531 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:43:00,810 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:43:01,089 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:43:01,138 - INFO - Running from_llm: --- 0.6071810722351074 seconds ---
+salesgpt.logger 2023-12-14 16:43:01,138 - INFO - Running seed_agent: --- 1.3113021850585938e-05 seconds ---
+werkzeug 2023-12-14 16:43:01,145 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:43:01,155 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:47:20,529 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:47:20,995 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:47:22,290 - INFO - Running from_llm: --- 7.891654968261719e-05 seconds ---
+salesgpt.logger 2023-12-14 16:47:22,290 - INFO - Running from_llm: --- 5.984306335449219e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:47:22,291 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:47:22,291 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:47:22,291 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:47:22,581 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:47:22,878 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:22,958 - INFO - Running from_llm: --- 0.6675927639007568 seconds ---
+salesgpt.logger 2023-12-14 16:47:22,958 - INFO - Running seed_agent: --- 1.4781951904296875e-05 seconds ---
+httpx 2023-12-14 16:47:23,789 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:23,794 - INFO - Running determine_conversation_stage: --- 0.8363370895385742 seconds ---
+httpx 2023-12-14 16:47:25,252 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:25,258 - INFO - Running step: --- 1.4638259410858154 seconds ---
+httpx 2023-12-14 16:47:32,653 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:32,658 - INFO - Running determine_conversation_stage: --- 0.40995001792907715 seconds ---
+httpx 2023-12-14 16:47:34,370 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:34,380 - INFO - Running step: --- 1.72104811668396 seconds ---
+httpx 2023-12-14 16:47:44,688 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:44,694 - INFO - Running determine_conversation_stage: --- 0.846977949142456 seconds ---
+httpx 2023-12-14 16:47:46,424 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:47:46,429 - INFO - Running step: --- 1.7355237007141113 seconds ---
+werkzeug 2023-12-14 16:47:46,439 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:47:46,454 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:48:05,744 - INFO - 127.0.0.1 - - [14/Dec/2023 16:48:05] "[35m[1mGET /hello HTTP/1.1[0m" 500 -
+werkzeug 2023-12-14 16:48:32,141 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:48:32,465 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:48:33,704 - INFO - Running from_llm: --- 5.173683166503906e-05 seconds ---
+salesgpt.logger 2023-12-14 16:48:33,705 - INFO - Running from_llm: --- 6.29425048828125e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:48:33,705 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:48:33,705 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:48:33,705 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:48:33,985 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:48:34,411 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:48:34,435 - INFO - Running from_llm: --- 0.7303791046142578 seconds ---
+salesgpt.logger 2023-12-14 16:48:34,435 - INFO - Running seed_agent: --- 1.0967254638671875e-05 seconds ---
+httpx 2023-12-14 16:48:35,293 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:48:35,300 - INFO - Running determine_conversation_stage: --- 0.8646891117095947 seconds ---
+httpx 2023-12-14 16:48:36,524 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:48:36,530 - INFO - Running step: --- 1.2295899391174316 seconds ---
+httpx 2023-12-14 16:48:51,420 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:48:51,425 - INFO - Running determine_conversation_stage: --- 0.44468092918395996 seconds ---
+httpx 2023-12-14 16:48:53,223 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:48:53,229 - INFO - Running step: --- 1.8032681941986084 seconds ---
+httpx 2023-12-14 16:49:03,866 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:49:03,873 - INFO - Running determine_conversation_stage: --- 0.41904401779174805 seconds ---
+httpx 2023-12-14 16:49:06,115 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:49:06,121 - INFO - Running step: --- 2.248512029647827 seconds ---
+werkzeug 2023-12-14 16:49:06,130 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:49:06,145 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:49:06,168 - INFO - 127.0.0.1 - - [14/Dec/2023 16:49:06] "GET /hello HTTP/1.1" 200 -
+werkzeug 2023-12-14 16:50:12,920 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:50:13,517 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:50:14,777 - INFO - Running from_llm: --- 5.3882598876953125e-05 seconds ---
+salesgpt.logger 2023-12-14 16:50:14,777 - INFO - Running from_llm: --- 5.7697296142578125e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:50:14,777 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:50:14,777 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:50:14,777 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:50:15,078 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:50:15,394 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:50:15,458 - INFO - Running from_llm: --- 0.6816909313201904 seconds ---
+salesgpt.logger 2023-12-14 16:50:15,459 - INFO - Running seed_agent: --- 1.4066696166992188e-05 seconds ---
+httpx 2023-12-14 16:50:15,880 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:50:15,886 - INFO - Running determine_conversation_stage: --- 0.42725086212158203 seconds ---
+werkzeug 2023-12-14 16:50:15,897 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:50:15,915 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:50:45,762 - INFO - 127.0.0.1 - - [14/Dec/2023 16:50:45] "GET /hello HTTP/1.1" 200 -
+werkzeug 2023-12-14 16:50:53,470 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:50:53,757 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:50:55,000 - INFO - Running from_llm: --- 5.1021575927734375e-05 seconds ---
+salesgpt.logger 2023-12-14 16:50:55,000 - INFO - Running from_llm: --- 5.817413330078125e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:50:55,000 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:50:55,000 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:50:55,000 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:50:55,278 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:50:55,567 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:50:55,613 - INFO - Running from_llm: --- 0.6137292385101318 seconds ---
+salesgpt.logger 2023-12-14 16:50:55,613 - INFO - Running seed_agent: --- 1.0967254638671875e-05 seconds ---
+httpx 2023-12-14 16:50:56,506 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:50:56,513 - INFO - Running determine_conversation_stage: --- 0.8999431133270264 seconds ---
+werkzeug 2023-12-14 16:50:56,522 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:50:56,536 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:51:26,580 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:51:26,972 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:51:28,256 - INFO - Running from_llm: --- 5.4836273193359375e-05 seconds ---
+salesgpt.logger 2023-12-14 16:51:28,256 - INFO - Running from_llm: --- 5.817413330078125e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:51:28,256 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:51:28,256 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:51:28,256 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:51:28,545 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:51:28,832 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:28,883 - INFO - Running from_llm: --- 0.6275539398193359 seconds ---
+salesgpt.logger 2023-12-14 16:51:28,884 - INFO - Running seed_agent: --- 1.0967254638671875e-05 seconds ---
+httpx 2023-12-14 16:51:29,429 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:29,432 - INFO - Running determine_conversation_stage: --- 0.5482831001281738 seconds ---
+salesgpt.logger 2023-12-14 16:51:33,344 - INFO - Running from_llm: --- 5.078315734863281e-05 seconds ---
+salesgpt.logger 2023-12-14 16:51:33,345 - INFO - Running from_llm: --- 5.507469177246094e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:51:33,345 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:51:33,345 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:51:33,345 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:51:33,623 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:51:33,987 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:34,019 - INFO - Running from_llm: --- 0.6743841171264648 seconds ---
+salesgpt.logger 2023-12-14 16:51:34,019 - INFO - Running seed_agent: --- 1.3828277587890625e-05 seconds ---
+httpx 2023-12-14 16:51:34,906 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:34,913 - INFO - Running determine_conversation_stage: --- 0.894085168838501 seconds ---
+salesgpt.logger 2023-12-14 16:51:34,913 - INFO - Running _prep_messages: --- 0.0002391338348388672 seconds ---
+httpx 2023-12-14 16:51:35,829 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:35,830 - INFO - Running _streaming_generator: --- 0.916614294052124 seconds ---
+salesgpt.logger 2023-12-14 16:51:35,830 - INFO - Running step: --- 0.9167680740356445 seconds ---
+werkzeug 2023-12-14 16:51:35,843 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug 2023-12-14 16:51:35,843 - INFO - [33mPress CTRL+C to quit[0m
+werkzeug 2023-12-14 16:51:35,844 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:51:37,105 - INFO - Running from_llm: --- 5.1975250244140625e-05 seconds ---
+salesgpt.logger 2023-12-14 16:51:37,105 - INFO - Running from_llm: --- 5.817413330078125e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:51:37,106 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:51:37,106 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:51:37,106 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:51:37,385 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:51:37,638 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:37,690 - INFO - Running from_llm: --- 0.584665060043335 seconds ---
+salesgpt.logger 2023-12-14 16:51:37,690 - INFO - Running seed_agent: --- 1.0967254638671875e-05 seconds ---
+httpx 2023-12-14 16:51:38,289 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:38,295 - INFO - Running determine_conversation_stage: --- 0.6052579879760742 seconds ---
+salesgpt.logger 2023-12-14 16:51:38,296 - INFO - Running _prep_messages: --- 0.00019788742065429688 seconds ---
+httpx 2023-12-14 16:51:39,209 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:51:39,210 - INFO - Running _streaming_generator: --- 0.9147021770477295 seconds ---
+salesgpt.logger 2023-12-14 16:51:39,210 - INFO - Running step: --- 0.9149000644683838 seconds ---
+werkzeug 2023-12-14 16:51:39,221 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:51:39,236 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 16:54:54,975 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 16:54:55,323 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 16:54:56,769 - INFO - Running from_llm: --- 5.364418029785156e-05 seconds ---
+salesgpt.logger 2023-12-14 16:54:56,770 - INFO - Running from_llm: --- 5.817413330078125e-05 seconds ---
+langchain.text_splitter 2023-12-14 16:54:56,770 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:54:56,770 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 16:54:56,770 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 16:54:57,053 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 16:54:57,335 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:54:57,388 - INFO - Running from_llm: --- 0.6187548637390137 seconds ---
+salesgpt.logger 2023-12-14 16:54:57,388 - INFO - Running seed_agent: --- 1.3113021850585938e-05 seconds ---
+httpx 2023-12-14 16:54:57,887 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:54:57,893 - INFO - Running determine_conversation_stage: --- 0.5048677921295166 seconds ---
+httpx 2023-12-14 16:54:59,197 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 16:54:59,203 - INFO - Running step: --- 1.3092010021209717 seconds ---
+werkzeug 2023-12-14 16:54:59,212 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 16:54:59,227 - INFO -  * Debugger PIN: 440-232-453
+werkzeug 2023-12-14 17:00:44,386 - INFO -  * Detected change in '/Users/shawncook/Projects/Sandbox/python-sales-gpt-2/app.py', reloading
+werkzeug 2023-12-14 17:00:44,919 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 17:00:46,201 - INFO - Running from_llm: --- 6.413459777832031e-05 seconds ---
+salesgpt.logger 2023-12-14 17:00:46,201 - INFO - Running from_llm: --- 6.413459777832031e-05 seconds ---
+langchain.text_splitter 2023-12-14 17:00:46,201 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 17:00:46,201 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 17:00:46,201 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 17:00:46,497 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 17:00:46,786 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:00:46,835 - INFO - Running from_llm: --- 0.6337850093841553 seconds ---
+salesgpt.logger 2023-12-14 17:00:46,835 - INFO - Running seed_agent: --- 1.1920928955078125e-05 seconds ---
+httpx 2023-12-14 17:00:47,281 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:00:47,287 - INFO - Running determine_conversation_stage: --- 0.45223283767700195 seconds ---
+httpx 2023-12-14 17:00:48,583 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:00:48,585 - INFO - Running step: --- 1.2979028224945068 seconds ---
+salesgpt.logger 2023-12-14 17:01:03,928 - INFO - Running from_llm: --- 5.078315734863281e-05 seconds ---
+salesgpt.logger 2023-12-14 17:01:03,929 - INFO - Running from_llm: --- 5.698204040527344e-05 seconds ---
+langchain.text_splitter 2023-12-14 17:01:03,929 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 17:01:03,929 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 17:01:03,929 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 17:01:04,207 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 17:01:04,474 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:01:04,525 - INFO - Running from_llm: --- 0.5963621139526367 seconds ---
+salesgpt.logger 2023-12-14 17:01:04,525 - INFO - Running seed_agent: --- 1.5020370483398438e-05 seconds ---
+httpx 2023-12-14 17:01:04,982 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:01:04,989 - INFO - Running determine_conversation_stage: --- 0.464216947555542 seconds ---
+httpx 2023-12-14 17:01:06,810 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:01:06,816 - INFO - Running step: --- 1.826458215713501 seconds ---
+werkzeug 2023-12-14 17:01:06,826 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+werkzeug 2023-12-14 17:01:06,826 - INFO - [33mPress CTRL+C to quit[0m
+werkzeug 2023-12-14 17:01:06,827 - INFO -  * Restarting with stat
+salesgpt.logger 2023-12-14 17:01:08,126 - INFO - Running from_llm: --- 6.079673767089844e-05 seconds ---
+salesgpt.logger 2023-12-14 17:01:08,127 - INFO - Running from_llm: --- 6.175041198730469e-05 seconds ---
+langchain.text_splitter 2023-12-14 17:01:08,127 - WARNING - Created a chunk of size 940, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 17:01:08,127 - WARNING - Created a chunk of size 844, which is longer than the specified 10
+langchain.text_splitter 2023-12-14 17:01:08,127 - WARNING - Created a chunk of size 837, which is longer than the specified 10
+chromadb.telemetry.product.posthog 2023-12-14 17:01:08,405 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+httpx 2023-12-14 17:01:08,657 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:01:08,708 - INFO - Running from_llm: --- 0.5818319320678711 seconds ---
+salesgpt.logger 2023-12-14 17:01:08,708 - INFO - Running seed_agent: --- 1.1920928955078125e-05 seconds ---
+httpx 2023-12-14 17:01:09,225 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:01:09,231 - INFO - Running determine_conversation_stage: --- 0.5230190753936768 seconds ---
+httpx 2023-12-14 17:01:10,602 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+salesgpt.logger 2023-12-14 17:01:10,608 - INFO - Running step: --- 1.3764870166778564 seconds ---
+werkzeug 2023-12-14 17:01:10,617 - WARNING -  * Debugger is active!
+werkzeug 2023-12-14 17:01:10,632 - INFO -  * Debugger PIN: 440-232-453
