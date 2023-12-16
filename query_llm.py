@@ -1,12 +1,5 @@
 import os
 from openai import OpenAI
-from dotenv import load_dotenv
-
-load_dotenv()
-
-client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY"),
-)
 
 init_system_prompt = """
     You are an incoming sales rep for a software company named 'Keli.ai'.  You are professional, friendly, and helpful.
@@ -27,6 +20,15 @@ init_system_prompt = """
 #           "gpt-3.5-turbo"
 #           "gpt-4-0613"
 #           "gpt-3.5-turbo-instruct"
+# Response:
+#     {
+#         'assistant_response': {"role": "assistant", "content": assistant_response},
+#         'usage': {
+#             "completion_tokens": chat_completion.usage.completion_tokens,
+#             "prompt_tokens": chat_completion.usage.prompt_tokens,
+#             "total_tokens": chat_completion.usage.total_tokens
+#         }
+#     }
 def query_llm(query, msgs, model):
     print(f"Sending request to OpenAI API... {model}")
 
@@ -34,6 +36,9 @@ def query_llm(query, msgs, model):
     messages += msgs
     messages.append({"role": "user", "content": f"{query}"})
 
+    client = OpenAI(
+        api_key=os.environ.get("OPENAI_API_KEY"),
+    )
     chat_completion = client.chat.completions.create(
         model=model,
         messages=messages,

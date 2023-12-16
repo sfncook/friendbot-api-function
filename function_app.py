@@ -1,7 +1,13 @@
 import azure.functions as func
 import logging
 from query_llm import query_llm
+from azure_speech import azure_speech
 import json
+from dotenv import load_dotenv
+import tempfile
+import asyncio
+
+load_dotenv()
 
 app = func.FunctionApp()
 
@@ -26,6 +32,16 @@ def chat_function(req: func.HttpRequest) -> func.HttpResponse:
         )
         pass
 
-    resp = query_llm(query, msgs, model)
-    return func.HttpResponse(json.dumps(resp))
+    llm_resp = query_llm(query, msgs, model)
+
+    temp_dir = tempfile.gettempdir()
+    temp_file = tempfile.NamedTemporaryFile(dir=temp_dir, delete=False)
+    print(temp_file.name)
+
+    speech_resp = asyncio.run(azure_speech("Hello one two three", temp_file.name))
+
+    merged_data = {**llm_resp, **speech_resp}
+    merged_json_resp = json.dumps(merged_data)
+
+    return func.HttpResponse(merged_json_resp)
 
