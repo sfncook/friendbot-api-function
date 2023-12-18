@@ -11,9 +11,9 @@ load_dotenv()
 
 app = func.FunctionApp()
 
-@app.route(route="chat", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
+@app.route(route="v1/chat", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
 def chat_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('POST /chat')
+    logging.info('POST /v1/chat')
 
     try:
         req_body = req.get_json()

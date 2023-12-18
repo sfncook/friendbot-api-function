@@ -3,29 +3,29 @@ from typing import Any
 import azure.cognitiveservices.speech as speechsdk
 import base64
 
-azureVisemeIdToRhubarb = {
-    0: 'X',
-    1: 'C',
-    2: 'D',
-    3: 'F',
-    4: 'C',
-    5: 'E',
-    6: 'B',
-    7: 'F',
-    8: 'E',
-    9: 'D',
-    10: 'F',
-    11: 'D',
-    12: 'C',
-    13: 'H',
-    14: 'H',
-    15: 'B',
-    16: 'B',
-    17: 'C',
-    18: 'G',
-    19: 'H',
-    20: 'H',
-    21: 'A',
+azureVisemeIdToModelCodes = {
+    0: {"target":"viseme_sil", "value":1},
+    1: {"target":"viseme_aa", "value":1},
+    2: {"target":"viseme_aa", "value":1},
+    3: {"target":"viseme_O", "value":1},
+    4: {"target":"viseme_O", "value":0.7},
+    5: {"target":"viseme_RR", "value":1},
+    6: {"target":"viseme_I", "value":0.7},
+    7: {"target":"viseme_U", "value":1},
+    8: {"target":"viseme_aa", "value":0.8},
+    9: {"target":"viseme_O", "value":1},
+    10: {"target":"viseme_aa", "value":0.7},
+    11: {"target":"viseme_aa", "value":1},
+    12: {"target":"viseme_RR", "value":0.8},
+    13: {"target":"viseme_O", "value":1},
+    14: {"target":"viseme_O", "value":1},
+    15: {"target":"viseme_SS", "value":1},
+    16: {"target":"viseme_CH", "value":1},
+    17: {"target":"viseme_TH", "value":1},
+    18: {"target":"viseme_FF", "value":1},
+    19: {"target":"viseme_DD", "value":1},
+    20: {"target":"viseme_kk", "value":1},
+    21: {"target":"viseme_PP", "value":1},
 }
 
 
@@ -62,10 +62,12 @@ async def azure_speech(text, file_name):
     prev_offset = 0
 
     for azure_viseme in viseme_data:
+        model_code = azureVisemeIdToModelCodes[azure_viseme["visemeId"]]
         lipsync_data["mouthCues"].append({
             "start": prev_offset,
             "end": azure_viseme["offset"],
-            "value": azureVisemeIdToRhubarb[azure_viseme["visemeId"]]
+            "target": model_code['target'],
+            "value": model_code['value']
         })
         prev_offset = azure_viseme["offset"]
 
