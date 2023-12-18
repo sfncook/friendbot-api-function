@@ -36,29 +36,24 @@ async def audio_file_to_base64(file_path):
 
 
 async def azure_speech(text, file_name):
+    print('azure_speech')
     speech_key = os.environ.get("AZURE_SPEECH_KEY")
     speech_region = os.environ.get("AZURE_SPEECH_REGION")
-
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)
     audio_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
-
     speech_config.speech_synthesis_voice_name = "en-US-JennyNeural"
-
     synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
-
     viseme_data = []
 
-    def on_viseme_received(_, e):
+    def on_viseme_received(e):
         viseme_data.append({
             "offset": e.audio_offset / 10000000.0,
             "visemeId": e.viseme_id
         })
 
     synthesizer.viseme_received.connect(on_viseme_received)
-    future = synthesizer.speak_text_async(text)
-    result = future.get()
+    synthesizer.speak_text_async(text).get()
 
-    # azureSpeechData = await azureSpeech(avatarResponseText, fileName)
     lipsync_data: dict[str, list[Any]] = {
         "mouthCues": [
             # example--> { "start": 0.00, "end": 0.01, "value": "X" },
