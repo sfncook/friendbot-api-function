@@ -11,11 +11,6 @@ load_dotenv()
 
 app = func.FunctionApp()
 
-@app.route(route="", auth_level=func.AuthLevel.ANONYMOUS)
-def test_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-    return func.HttpResponse("Hello world!")
-
 @app.route(route="chat", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
 def chat_function(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('POST /chat')
