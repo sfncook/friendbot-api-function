@@ -60,6 +60,7 @@ def query_llm(query, msgs, model):
     client = OpenAI(
         api_key=os.environ.get("OPENAI_API_KEY"),
     )
+
     chat_completion = client.chat.completions.create(
         model=model,
         messages=messages,
@@ -67,7 +68,7 @@ def query_llm(query, msgs, model):
         top_p=0.5,
     )
     assistant_response_str= chat_completion.choices[0].message.content
-    print(f"Response received from OpenAI API: {assistant_response_str}")
+    print(f"Response received from OpenAI API: {assistant_response_str}", flush=True)
 
     # GPT 3 is pretty bad at returning JSON and often responds with just a string
     try:
@@ -76,7 +77,9 @@ def query_llm(query, msgs, model):
         assistant_response = {"text": assistant_response_str, "facialExpression": "smile", "animation": "Talking_0"}
 
     return {
-        'assistant_response': {"role": "assistant", "content": assistant_response},
+        'assistant_response': {"role": "assistant", "content": assistant_response['text']},
+        'facialExpression': assistant_response['facialExpression'],
+        'animation': assistant_response['animation'],
         'usage': {
             "completion_tokens": chat_completion.usage.completion_tokens,
             "prompt_tokens": chat_completion.usage.prompt_tokens,
