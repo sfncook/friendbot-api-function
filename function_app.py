@@ -11,6 +11,18 @@ load_dotenv()
 
 app = func.FunctionApp()
 
+@app.route(route="v1/chat", methods=["OPTIONS"], auth_level=func.AuthLevel.ANONYMOUS)
+def cors_chat_function(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('POST /v1/chat')
+
+    # Define CORS headers
+    headers = {
+        "Access-Control-Allow-Origin": "*",  # Replace with your allowed origin(s)
+        "Access-Control-Allow-Methods": "OPTIONS, POST",  # Add other allowed methods if needed
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+    return func.HttpResponse(headers=headers)
+
 @app.route(route="v1/chat", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
 def chat_function(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('POST /v1/chat')
@@ -39,4 +51,29 @@ def chat_function(req: func.HttpRequest) -> func.HttpResponse:
     merged_json_resp = json.dumps(merged_data)
 
     return func.HttpResponse(merged_json_resp)
+
+# Example merged_json_resp:
+# {
+#     "assistant_response": {
+#         "role": "assistant",
+#         "content": "{\"text\": \"Hello world!\", \"facialExpression\": \"smile\", \"animation\": \"Talking_0\"}"
+#     },
+#     "usage": {
+#         "completion_tokens": 24,
+#         "prompt_tokens": 241,
+#         "total_tokens": 265
+#     },
+#     "lipsync": {
+#         "mouthCues": [
+#             {
+#                 "start": 0,
+#                 "end": 0.05,
+#                 "target": "viseme_sil",
+#                 "value": 1
+#             },
+#             ...
+#         ]
+#     },
+#     "audio": "..."
+# }
 
