@@ -11,17 +11,16 @@ load_dotenv()
 
 app = func.FunctionApp()
 
+cors_headers = {
+    "Access-Control-Allow-Origin": "*",  # Replace with your allowed origin(s)
+    "Access-Control-Allow-Methods": "OPTIONS, POST",  # Add other allowed methods if needed
+    "Access-Control-Allow-Headers": "Content-Type",
+}
+
 @app.route(route="v1/chat", methods=["OPTIONS"], auth_level=func.AuthLevel.ANONYMOUS)
 def cors_chat_function(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('POST /v1/chat')
-
-    # Define CORS headers
-    headers = {
-        "Access-Control-Allow-Origin": "*",  # Replace with your allowed origin(s)
-        "Access-Control-Allow-Methods": "OPTIONS, POST",  # Add other allowed methods if needed
-        "Access-Control-Allow-Headers": "Content-Type",
-    }
-    return func.HttpResponse(headers=headers)
+    return func.HttpResponse(headers=cors_headers)
 
 @app.route(route="v1/chat", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
 def chat_function(req: func.HttpRequest) -> func.HttpResponse:
@@ -29,9 +28,9 @@ def chat_function(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         req_body = req.get_json()
-        query = req_body.get("query")
-        msgs = req_body.get("msgs")
-        model = req_body.get("model")
+        query = req_body.get("query", "Hello!")
+        msgs = req_body.get("msgs", [])
+        model = req_body.get("model", "gpt-3.5-turbo")
     except ValueError:
         return func.HttpResponse(
             "Missing request body parameters (query, msgs, or model)",
@@ -50,7 +49,12 @@ def chat_function(req: func.HttpRequest) -> func.HttpResponse:
     merged_data = {**llm_resp, **speech_resp}
     merged_json_resp = json.dumps(merged_data)
 
-    return func.HttpResponse(merged_json_resp)
+    return func.HttpResponse(
+        status_code=200,
+        headers=cors_headers,
+        body=merged_json_resp,
+        mimetype="application/json"
+    )
 
 # Example merged_json_resp:
 # {
