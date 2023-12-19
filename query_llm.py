@@ -1,7 +1,9 @@
 import os
+import json
 from openai import OpenAI
 
 init_system_prompt = """
+    You must only reply with JSON
     You are a chat bot avatar named "Keli" who specializes in becoming friends with lonely people.
     If the person doesn't seem to know what to say to you, then you should try to engage the user by offering to tell them a joke or an interesting science fact.
     You should never become angry or hostile and you should always be calm, helpful, friendly, happy, and respectful.
@@ -64,8 +66,15 @@ def query_llm(query, msgs, model):
         temperature=1,
         top_p=0.5,
     )
-    print("Response received from OpenAI API.")
-    assistant_response = chat_completion.choices[0].message.content
+    assistant_response_str= chat_completion.choices[0].message.content
+    print(f"Response received from OpenAI API: {assistant_response_str}")
+
+    # GPT 3 is pretty bad at returning JSON and often responds with just a string
+    try:
+        assistant_response = json.loads(assistant_response_str)
+    except ValueError as err:
+        assistant_response = {"text": assistant_response_str, "facialExpression": "smile", "animation": "Talking_0"}
+
     return {
         'assistant_response': {"role": "assistant", "content": assistant_response},
         'usage': {

@@ -36,7 +36,6 @@ async def audio_file_to_base64(file_path):
 
 
 async def azure_speech(text, file_name):
-    print('azure_speech')
     speech_key = os.environ.get("AZURE_SPEECH_KEY")
     speech_region = os.environ.get("AZURE_SPEECH_REGION")
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)

@@ -38,16 +38,17 @@ def chat_function(req: func.HttpRequest) -> func.HttpResponse:
         )
         pass
 
+    print(f"query: {query}")
     llm_resp = query_llm(query, msgs, model)
 
     temp_dir = tempfile.gettempdir()
     temp_file = tempfile.NamedTemporaryFile(dir=temp_dir, delete=False)
     print(temp_file.name)
 
-    speech_resp = asyncio.run(azure_speech(llm_resp['assistant_response']['content'], temp_file.name))
+    speech_resp = asyncio.run(azure_speech(llm_resp['assistant_response']['content']['text'], temp_file.name))
 
     merged_data = {**llm_resp, **speech_resp}
-    merged_json_resp = json.dumps(merged_data)
+    merged_json_resp = json.dumps(merged_data, separators=(',', ':'))
 
     return func.HttpResponse(
         status_code=200,
