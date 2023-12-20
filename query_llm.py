@@ -1,6 +1,7 @@
 import os
 import json
-from openai import OpenAI
+# from openai import OpenAI
+from openai import AzureOpenAI
 
 init_system_prompt = """
     You must only reply with JSON
@@ -57,9 +58,17 @@ def query_llm(query, msgs, model):
     messages += msgs
     messages.append({"role": "user", "content": f"{query}"})
 
-    client = OpenAI(
-        api_key=os.environ.get("OPENAI_API_KEY"),
+    # client = OpenAI(
+    #     api_key=os.environ.get("OPENAI_API_KEY"),
+    # )
+    client = AzureOpenAI(
+        azure_endpoint = "https://keli-chatbot.openai.azure.com/",
+        api_key="6b22e2a31df942ed92e0e283614882aa",
+        api_version="2023-05-15"
     )
+    # Azure deployments:
+    # keli-35-turbo
+    model = 'keli-35-turbo'
 
     chat_completion = client.chat.completions.create(
         model=model,
