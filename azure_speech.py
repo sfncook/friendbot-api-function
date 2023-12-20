@@ -40,6 +40,8 @@ async def azure_speech(text, file_name):
         print(f'fuck azure a.1 text:{text}')
         speech_key = os.environ.get("AZURE_SPEECH_KEY")
         speech_region = os.environ.get("AZURE_SPEECH_REGION")
+        print(f"speech_key: {speech_key}")
+        print(f"speech_region: {speech_region}")
         print('fuck azure a.2')
         speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)
         audio_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
