@@ -37,12 +37,8 @@ async def audio_file_to_base64(file_path):
 
 async def azure_speech(text, file_name):
     try:
-        print(f'fuck azure a.1 text:{text}')
         speech_key = os.environ.get("AZURE_SPEECH_KEY")
         speech_region = os.environ.get("AZURE_SPEECH_REGION")
-        print(f"speech_key: {speech_key}")
-        print(f"speech_region: {speech_region}")
-        print('fuck azure a.2')
         speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)
         audio_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
         speech_config.speech_synthesis_voice_name = "en-US-JennyNeural"
@@ -55,11 +51,8 @@ async def azure_speech(text, file_name):
                 "visemeId": e.viseme_id
             })
 
-        print('fuck azure a.3')
         synthesizer.viseme_received.connect(on_viseme_received)
-        print('fuck azure a.4')
         synthesizer.speak_text_async(text).get()
-        print('fuck azure a.5')
 
         lipsync_data: dict[str, list[Any]] = {
             "mouthCues": [
@@ -68,7 +61,6 @@ async def azure_speech(text, file_name):
         }
         prev_offset = 0
 
-        print('fuck azure ')
         for azure_viseme in viseme_data:
             model_code = azureVisemeIdToModelCodes[azure_viseme["visemeId"]]
             lipsync_data["mouthCues"].append({
