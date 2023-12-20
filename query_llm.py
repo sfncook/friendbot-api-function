@@ -81,10 +81,12 @@ def query_llm(query, msgs, model):
 
     # GPT 3 is pretty bad at returning JSON and often responds with just a string
     try:
+        print('fuck azure 1')
         assistant_response = json.loads(assistant_response_str)
     except ValueError as err:
         assistant_response = {"text": assistant_response_str, "facialExpression": "smile", "animation": "Talking_0"}
 
+    print('fuck azure 2')
     return {
         'assistant_response': {"role": "assistant", "content": assistant_response['text']},
         'facialExpression': assistant_response['facialExpression'],
