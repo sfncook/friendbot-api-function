@@ -36,41 +36,58 @@ async def audio_file_to_base64(file_path):
 
 
 async def azure_speech(text, file_name):
-    speech_key = os.environ.get("AZURE_SPEECH_KEY")
-    speech_region = os.environ.get("AZURE_SPEECH_REGION")
-    speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)
-    audio_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
-    speech_config.speech_synthesis_voice_name = "en-US-JennyNeural"
-    synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
-    viseme_data = []
+    try:
+        print(f'fuck azure a.1 text:{text}')
+        speech_key = os.environ.get("AZURE_SPEECH_KEY")
+        speech_region = os.environ.get("AZURE_SPEECH_REGION")
+        print('fuck azure a.2')
+        speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=speech_region)
+        audio_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
+        speech_config.speech_synthesis_voice_name = "en-US-JennyNeural"
+        synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+        viseme_data = []
 
-    def on_viseme_received(e):
-        viseme_data.append({
-            "offset": e.audio_offset / 10000000.0,
-            "visemeId": e.viseme_id
-        })
+        def on_viseme_received(e):
+            viseme_data.append({
+                "offset": e.audio_offset / 10000000.0,
+                "visemeId": e.viseme_id
+            })
 
-    synthesizer.viseme_received.connect(on_viseme_received)
-    synthesizer.speak_text_async(text).get()
+        print('fuck azure a.3')
+        synthesizer.viseme_received.connect(on_viseme_received)
+        print('fuck azure a.4')
+        synthesizer.speak_text_async(text).get()
+        print('fuck azure a.5')
 
-    lipsync_data: dict[str, list[Any]] = {
-        "mouthCues": [
-            # example--> { "start": 0.00, "end": 0.01, "value": "X" },
-        ]
-    }
-    prev_offset = 0
+        lipsync_data: dict[str, list[Any]] = {
+            "mouthCues": [
+                # example--> { "start": 0.00, "end": 0.01, "value": "X" },
+            ]
+        }
+        prev_offset = 0
 
-    for azure_viseme in viseme_data:
-        model_code = azureVisemeIdToModelCodes[azure_viseme["visemeId"]]
-        lipsync_data["mouthCues"].append({
-            "start": prev_offset,
-            "end": azure_viseme["offset"],
-            "target": model_code['target'],
-            "value": model_code['value']
-        })
-        prev_offset = azure_viseme["offset"]
+        print('fuck azure ')
+        for azure_viseme in viseme_data:
+            model_code = azureVisemeIdToModelCodes[azure_viseme["visemeId"]]
+            lipsync_data["mouthCues"].append({
+                "start": prev_offset,
+                "end": azure_viseme["offset"],
+                "target": model_code['target'],
+                "value": model_code['value']
+            })
+            prev_offset = azure_viseme["offset"]
 
-    return {
-        "lipsync": lipsync_data,
-        "audio": await audio_file_to_base64(file_name)
-    }
+        return {
+            "lipsync": lipsync_data,
+            "audio": await audio_file_to_base64(file_name)
+        }
+    except Exception as inst:
+        print("ERROR in azure_speech")
+        print(type(inst))    # the exception type
+        print(inst.args)     # arguments stored in .args
+        print(inst)          # __str__ allows args to be printed directly,
+        # but may be overridden in exception subclasses
+        return {
+            "lipsync": "",
+            "audio": ""
+        }
