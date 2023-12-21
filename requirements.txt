@@ -6,3 +6,5 @@ azure-functions
 openai
 python-dotenv
 azure.cognitiveservices.speech
+azure-cosmos
+azure-identity

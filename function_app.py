@@ -7,6 +7,23 @@ from dotenv import load_dotenv
 import tempfile
 import asyncio
 
+
+
+from azure.cosmos import CosmosClient, PartitionKey, exceptions
+url = "https://keli-chatbot-001.documents.azure.com:443/"
+key = "RtqrMEea85ipxNAwW3wE089yC3BjWvBveDoHt9Xckdr7o5QtGq719ZYc3tQiButnRgiW1IpPwIKnACDbPnTxjw=="
+client = CosmosClient(url, credential=key)
+database_name = 'CopilotSampleDb'
+database = client.get_database_client(database_name)
+container_name = 'SampleContainer'
+container = database.get_container_client(container_name)
+query = "SELECT * FROM c"
+items = list(container.query_items(query, enable_cross_partition_query=True))
+for item in items:
+    print(item)
+
+
+
 load_dotenv()
 
 app = func.FunctionApp()
