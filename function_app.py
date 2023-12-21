@@ -4,7 +4,7 @@ load_dotenv()
 import azure.functions as func
 import logging
 from query_llm import query_llm
-from convo_data import create_new, add_message_to_convo, get_last_n_messages_for_convo, convert_cosmos_messages_to_gpt_format
+from convo_data import create_new, add_message_to_convo, get_last_n_messages_for_convo, convert_cosmos_messages_to_gpt_format, update_user_data
 from azure_speech import azure_speech
 import json
 import tempfile
@@ -45,7 +45,7 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         req_body = req.get_json()
-        conversation_id = req_body.get("conversation_id")
+        convo_id = req_body.get("conversation_id")
         user_msg = req_body.get("user_msg", "Hello!")
     except ValueError:
         return func.HttpResponse(
@@ -54,7 +54,7 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
         )
         pass
 
-    cosmos_msgs = get_last_n_messages_for_convo(conversation_id)
+    cosmos_msgs = get_last_n_messages_for_convo(convo_id)
     gpt_msgs = convert_cosmos_messages_to_gpt_format(cosmos_msgs)
 
     print(f"user_msg: {user_msg}")
@@ -64,10 +64,18 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
     temp_file = tempfile.NamedTemporaryFile(dir=temp_dir, delete=False)
     print(temp_file.name)
 
-    speech_resp = asyncio.run(azure_speech(llm_resp['assistant_response']['content'], temp_file.name))
+    assistant_response_text = llm_resp['assistant_response']['content']
+    usage_total_tokens = llm_resp['usage']['total_tokens']
+    user_data = llm_resp['user_data']
+
+    speech_resp = asyncio.run(azure_speech(assistant_response_text, temp_file.name))
 
     merged_data = {**llm_resp, **speech_resp}
     merged_json_resp = json.dumps(merged_data, separators=(',', ':'))
+
+    add_message_to_convo(convo_id, user_msg, assistant_response_text, usage_total_tokens)
+    if user_data != {}:
+        update_user_data(convo_id, user_data)
 
     return func.HttpResponse(
         status_code=200,

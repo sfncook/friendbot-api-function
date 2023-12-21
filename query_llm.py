@@ -81,11 +81,14 @@ def query_llm(user_msg, msgs):
     except ValueError as err:
         assistant_response = {"text": assistant_response_str, "facialExpression": "smile", "animation": "Talking_0"}
 
+    user_data = {}
+    if 'user_data' in assistant_response:
+        user_data = assistant_response['user_data']
     return {
         'assistant_response': {"role": "assistant", "content": assistant_response['text']},
         'facialExpression': assistant_response['facialExpression'],
         'animation': assistant_response['animation'],
-        'user_data': assistant_response['user_data'],
+        'user_data': user_data,
         'usage': {
             "completion_tokens": chat_completion.usage.completion_tokens,
             "prompt_tokens": chat_completion.usage.prompt_tokens,

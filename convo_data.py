@@ -71,6 +71,47 @@ def add_message_to_convo(convo_id, user_msg, assistant_response, total_tokens):
     messages_container.create_item(new_msg)
     return new_msg
 
+def update_user_data(convo_id, user_data):
+    # Read the existing conversation object
+    conversation_obj = conversations_container.read_item(
+        item=convo_id,
+        partition_key=convo_id,
+    )
+    print("Point read\t", conversation_obj)
+
+    # Check for changes or missing keys
+    needs_update = False
+    for key, value in user_data.items():
+        # Special handling for 'hobbies' and 'interests', which are arrays
+        if key in ["hobbies", "interests"]:
+            if key not in conversation_obj:
+                conversation_obj[key] = []
+
+            # Split comma-separated string into a list and trim whitespace
+            if isinstance(value, str):
+                value = [item.strip() for item in value.split(',')]
+
+            # Merge with existing list and de-duplicate
+            updated_list = list(set(conversation_obj[key] + value))
+            if updated_list != conversation_obj[key]:
+                conversation_obj[key] = updated_list
+                needs_update = True
+        elif key not in conversation_obj or conversation_obj[key] != value:
+            conversation_obj[key] = value
+            needs_update = True
+
+    # Update the item in Cosmos DB if needed
+    if needs_update:
+        try:
+            updated_item = conversations_container.replace_item(
+                item=convo_id,
+                body=conversation_obj
+            )
+            print("Updated item:", updated_item)
+        except Exception as e:
+            print(f"Error updating conversation: {e}")
+
+
 def get_last_n_messages_for_convo(convo_id):
     query = f"SELECT TOP 10 * FROM {messages_container_name} m WHERE m.conversation_id = @conversation_id ORDER BY m.timestamp DESC"
     query_params = [
@@ -83,6 +124,7 @@ def get_last_n_messages_for_convo(convo_id):
     )
     return list(messages_query_iterable)
 
+# Utility method
 def convert_cosmos_messages_to_gpt_format(messages):
     converted_messages = []
 
