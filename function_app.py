@@ -8,10 +8,14 @@ import tempfile
 import asyncio
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
 import uuid
+import os
+
+load_dotenv()
+
+url = os.environ.get("COSMOS_ENDPOINT")
+key = os.environ.get("COSMOS_KEY")
 
 
-url = "https://keli-chatbot-001.documents.azure.com:443/"
-key = "RtqrMEea85ipxNAwW3wE089yC3BjWvBveDoHt9Xckdr7o5QtGq719ZYc3tQiButnRgiW1IpPwIKnACDbPnTxjw=="
 client = CosmosClient(url, credential=key)
 database_name = 'keli'
 database = client.get_database_client(database_name)
@@ -30,12 +34,6 @@ container = database.get_container_client(container_name)
 #     "sale": False,
 # }
 # container.create_item(new_item)
-
-
-# print(uuid.uuid4(), flush=True)
-
-
-load_dotenv()
 
 app = func.FunctionApp()
 

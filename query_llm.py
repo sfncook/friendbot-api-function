@@ -1,6 +1,5 @@
 import os
 import json
-# from openai import OpenAI
 from openai import AzureOpenAI
 
 init_system_prompt = """
@@ -45,6 +44,12 @@ init_system_prompt = """
 # Response:
 #     {
 #         'assistant_response': {"role": "assistant", "content": assistant_response},
+#         'facialExpression': "smile",
+#         'animation': "Talking_1",
+#         'user_data': {
+#             "name": "Shawn",
+#             "age": 49
+#         },
 #         'usage': {
 #             "completion_tokens": chat_completion.usage.completion_tokens,
 #             "prompt_tokens": chat_completion.usage.prompt_tokens,
@@ -58,16 +63,11 @@ def query_llm(query, msgs, model):
     messages += msgs
     messages.append({"role": "user", "content": f"{query}"})
 
-    # client = OpenAI(
-    #     api_key=os.environ.get("OPENAI_API_KEY"),
-    # )
     client = AzureOpenAI(
-        azure_endpoint = "https://keli-chatbot.openai.azure.com/",
-        api_key="6b22e2a31df942ed92e0e283614882aa",
+        azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT"),
+        api_key= os.environ.get("AZURE_OPENAI_API_KEY"),
         api_version="2023-05-15"
     )
-    # Azure deployments:
-    # keli-35-turbo
     model = 'keli-35-turbo'
 
     chat_completion = client.chat.completions.create(
