@@ -34,13 +34,9 @@ init_system_prompt = """
     }
 """
 
-# query = String that is the new user question or message to the LLM
+# user_msg = String that is the new user question or message to the LLM
 # msgs = Array of prior message objects that is the conversation between user and LLM
 #   [{"role": ["user" | "assistant"], "content": "Message contents"}, ...]
-# model = String name of GPT model
-#           "gpt-3.5-turbo"
-#           "gpt-4-0613"
-#           "gpt-3.5-turbo-instruct"
 # Response:
 #     {
 #         'assistant_response': {"role": "assistant", "content": assistant_response},
@@ -56,12 +52,12 @@ init_system_prompt = """
 #             "total_tokens": chat_completion.usage.total_tokens
 #         }
 #     }
-def query_llm(query, msgs, model):
-    print(f"Sending request to OpenAI API... {model}")
+def query_llm(user_msg, msgs):
+    print(f"Sending request to OpenAI API...")
 
     messages = [{"role": 'system', "content": init_system_prompt}]
     messages += msgs
-    messages.append({"role": "user", "content": f"{query}"})
+    messages.append({"role": "user", "content": f"{user_msg}"})
 
     client = AzureOpenAI(
         azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT"),
