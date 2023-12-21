@@ -54,6 +54,7 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
         req_body = req.get_json()
         convo_id = req_body.get("conversation_id")
         user_msg = req_body.get("user_msg", "Hello!")
+        mute = req_body.get("mute", False)
     except ValueError:
         return func.HttpResponse(
             "Missing request body parameters (conversation_id, user_msg)",
@@ -76,7 +77,13 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
     usage_total_tokens = llm_resp['usage']['total_tokens']
     user_data = llm_resp['user_data']
 
-    speech_resp = asyncio.run(azure_speech(assistant_response_text, temp_file.name))
+    if not mute:
+        speech_resp = asyncio.run(azure_speech(assistant_response_text, temp_file.name))
+    else:
+        speech_resp = {
+            "lipsync": {},
+            "audio": ""
+        }
 
     merged_data = {**llm_resp, **speech_resp}
     merged_json_resp = json.dumps(merged_data, separators=(',', ':'))
