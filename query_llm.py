@@ -89,6 +89,7 @@ def query_llm(query, msgs, model):
         'assistant_response': {"role": "assistant", "content": assistant_response['text']},
         'facialExpression': assistant_response['facialExpression'],
         'animation': assistant_response['animation'],
+        'user_data': assistant_response['user_data'],
         'usage': {
             "completion_tokens": chat_completion.usage.completion_tokens,
             "prompt_tokens": chat_completion.usage.prompt_tokens,

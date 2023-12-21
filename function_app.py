@@ -6,22 +6,33 @@ import json
 from dotenv import load_dotenv
 import tempfile
 import asyncio
-
-
-
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
+import uuid
+
+
 url = "https://keli-chatbot-001.documents.azure.com:443/"
 key = "RtqrMEea85ipxNAwW3wE089yC3BjWvBveDoHt9Xckdr7o5QtGq719ZYc3tQiButnRgiW1IpPwIKnACDbPnTxjw=="
 client = CosmosClient(url, credential=key)
-database_name = 'CopilotSampleDb'
+database_name = 'keli'
 database = client.get_database_client(database_name)
-container_name = 'SampleContainer'
+container_name = 'keli-conversations'
 container = database.get_container_client(container_name)
-query = "SELECT * FROM c"
-items = list(container.query_items(query, enable_cross_partition_query=True))
-for item in items:
-    print(item)
+# query = "SELECT * FROM c"
+# items = list(container.query_items(query, enable_cross_partition_query=True))
+# print(items, flush=True)
+#
+# new_item = {
+#     "id": "70b63682-b93a-4c77-aad2-65501347265f",
+#     "categoryId": "61dba35b-4f02-45c5-b648-c6badc0cbd79",
+#     "categoryName": "gear-surf-surfboards",
+#     "name": "Yamba Surfboard",
+#     "quantity": 12,
+#     "sale": False,
+# }
+# container.create_item(new_item)
 
+
+# print(uuid.uuid4(), flush=True)
 
 
 load_dotenv()
@@ -40,8 +51,26 @@ def cors_chat_function(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(headers=cors_headers)
 
 @app.route(route="v1/chat", methods=["POST"], auth_level=func.AuthLevel.ANONYMOUS)
-def chat_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('POST /v1/chat')
+def create_new_conversation(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('POST /v1/chat - Create new chat conversation')
+
+    new_conversation = {
+        "id": str(uuid.uuid4()),
+        "msgs": [],
+    }
+
+    container.create_item(new_conversation)
+
+    return func.HttpResponse(
+        status_code=200,
+        headers=cors_headers,
+        body=json.dumps(new_conversation, separators=(',', ':')),
+        mimetype="application/json"
+    )
+
+@app.route(route="v1/chat", methods=["PUT"], auth_level=func.AuthLevel.ANONYMOUS)
+def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('PUT /v1/chat - User has submitted a new message or question')
 
     try:
         req_body = req.get_json()
