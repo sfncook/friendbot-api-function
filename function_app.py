@@ -4,7 +4,14 @@ load_dotenv()
 import azure.functions as func
 import logging
 from query_llm import query_llm
-from convo_data import create_new, add_message_to_convo, get_last_n_messages_for_convo, convert_cosmos_messages_to_gpt_format, update_user_data
+from convo_data import (
+    create_new,
+    add_message_to_convo,
+    get_last_n_messages_for_convo,
+    convert_cosmos_messages_to_gpt_format,
+    update_user_data,
+    get_conversation
+)
 from azure_speech import azure_speech
 import json
 import tempfile
@@ -54,11 +61,12 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
         )
         pass
 
+    conversation_obj = get_conversation(convo_id)
     cosmos_msgs = get_last_n_messages_for_convo(convo_id)
     gpt_msgs = convert_cosmos_messages_to_gpt_format(cosmos_msgs)
 
     print(f"user_msg: {user_msg}")
-    llm_resp = query_llm(user_msg, gpt_msgs)
+    llm_resp = query_llm(user_msg, gpt_msgs, conversation_obj)
 
     temp_dir = tempfile.gettempdir()
     temp_file = tempfile.NamedTemporaryFile(dir=temp_dir, delete=False)
@@ -75,7 +83,7 @@ def add_message_to_conversation(req: func.HttpRequest) -> func.HttpResponse:
 
     add_message_to_convo(convo_id, user_msg, assistant_response_text, usage_total_tokens)
     if user_data != {}:
-        update_user_data(convo_id, user_data)
+        update_user_data(conversation_obj, user_data)
 
     return func.HttpResponse(
         status_code=200,

@@ -19,7 +19,9 @@ init_system_prompt = """
     Each message has a text, facialExpression, and animation property.
     The different facial expressions are: smile, sad, angry, surprised, funnyFace, and default.
     The different animations are: Talking_0, Talking_1, Talking_2, Crying, Laughing, and Idle.
-    Further more, if they have told you their name, age, gender, or hobbies/interests then include that in the "user_data" field of the JSON response
+    Further more, if they have told you their name, age, or hobbies/interests then include that in the "user_data" field of the JSON response
+    If they tell you about a new hobby or interest then you should always respond with a JSON structure with the user_data updated to reflect that.
+    Also if they decide they want you to call them by a different name you should respond with a JSON object with the new name.
     You must only respond with JSON data in this format: {
         "text": "...", 
         "facialExpression": "...", 
@@ -27,7 +29,6 @@ init_system_prompt = """
         "user_data": {
           "name": "...",
           "age": ##,
-          "gender": "...",
           "hobbies": "...",
           "interests": "..."
         }
@@ -52,10 +53,22 @@ init_system_prompt = """
 #             "total_tokens": chat_completion.usage.total_tokens
 #         }
 #     }
-def query_llm(user_msg, msgs):
+def query_llm(user_msg, msgs, conversation_obj):
     print(f"Sending request to OpenAI API...")
 
-    messages = [{"role": 'system', "content": init_system_prompt}]
+
+    system_prompt = str(init_system_prompt)
+    if 'name' in conversation_obj:
+        system_prompt += f"\nThe user\'s name is {conversation_obj['name']}. You should always try to refer to them by this name.\n"
+    if 'age' in conversation_obj:
+        system_prompt += f"\nThe user is {conversation_obj['age']} years old. You should adjust the quality and sophistication of your speech to make this conversation as engaging and relatable as possible to this person.\n"
+    if 'hobbies' in conversation_obj:
+        system_prompt += f"\nHere is a list of the user's hobbies: {','.join(conversation_obj['hobbies'])}.  You should ask them questions about these hobbies and provide them with new ideas to try.\n"
+    if 'interests' in conversation_obj:
+        system_prompt += f"\nHere is a list of the user's interests: {','.join(conversation_obj['interests'])}.  You should tell them interesting facts or curiosities about these topics and ask them what they might want to know about them.  Occasionally remind them that you have a tremendous amount of knowledge at your disposal and are fun to chat with about virtually any topic.\n"
+
+    # print(f"system_prompt:{system_prompt}")
+    messages = [{"role": 'system', "content": system_prompt}]
     messages += msgs
     messages.append({"role": "user", "content": f"{user_msg}"})
 

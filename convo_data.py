@@ -71,13 +71,12 @@ def add_message_to_convo(convo_id, user_msg, assistant_response, total_tokens):
     messages_container.create_item(new_msg)
     return new_msg
 
-def update_user_data(convo_id, user_data):
+def update_user_data(conversation_obj, user_data):
     # Read the existing conversation object
-    conversation_obj = conversations_container.read_item(
-        item=convo_id,
-        partition_key=convo_id,
-    )
-    print("Point read\t", conversation_obj)
+    # conversation_obj = conversations_container.read_item(
+    #     item=convo_id,
+    #     partition_key=convo_id,
+    # )
 
     # Check for changes or missing keys
     needs_update = False
@@ -111,6 +110,11 @@ def update_user_data(convo_id, user_data):
         except Exception as e:
             print(f"Error updating conversation: {e}")
 
+def get_conversation(convo_id):
+    return conversations_container.read_item(
+        item=convo_id,
+        partition_key=convo_id,
+    )
 
 def get_last_n_messages_for_convo(convo_id):
     query = f"SELECT TOP 10 * FROM {messages_container_name} m WHERE m.conversation_id = @conversation_id ORDER BY m.timestamp DESC"
